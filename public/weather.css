@@ -1,0 +1,214 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Container */
+#container {
+    max-width: 9000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Card */
+.card {
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.dark-mode .card {
+    background-color: #1e1e1e;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Toggle Switch */
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch-label {
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    background-color: #000000;
+    border-radius: 24px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.dark-mode .switch-label {
+    background-color: #ffffff;
+}
+
+.dark-mode .switch-label::before {
+    transform: translateX(26px);
+}
+
+/* Icon Styling */
+.icon {
+    font-size: 24px;
+    /* Adjust to a standard size */
+    width: 30px;
+    /* Fixed width */
+    height: 30px;
+    /* Fixed height */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    /* Space between icon and label */
+    padding: 5px;
+    /* Padding around icon */
+    border-radius: 50%;
+    /* Circular background */
+    background-color: #bdb8b8;
+    /* Light background color */
+}
+
+/* For images inside icons, ensure they fit the same size */
+.icon img {
+    width: 100%;
+    /* Ensure the image fills the icon size */
+    height: 100%;
+    /* Make the image take full height */
+    object-fit: contain;
+    /* Maintain aspect ratio */
+}
+
+
+/* Chart Container */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    /* Center the chart */
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.dark-mode .chart-container {
+    background-color: #333;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    max-height: 400px;
+}
+
+/* Font color customization */
+.card,
+.header,
+.icon,
+h2,
+p {
+    color: #333;
+    /* Default text color for light mode */
+}
+
+/* Dark Mode Font Color */
+body.dark-mode .card,
+body.dark-mode .header,
+body.dark-mode .icon,
+body.dark-mode h2,
+body.dark-mode p {
+    color: #f0f0f0;
+    /* White text color for dark mode */
+}
+
+.search-bar {
+    background-color: #000000;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.dark-mode .search-bar {
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.search-btn {
+    background-color: #000000;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.dark-mode .search-btn {
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.dashboardtext {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+}
+
+a {
+    color: rgb(255, 255, 255);
+}
