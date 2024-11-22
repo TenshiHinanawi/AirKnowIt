@@ -1,7 +1,7 @@
 ## First, Install Composer
 - composer install
 
-## For The env Follow This Format
+## For the env follow this Format
 
 APP_NAME=Laravel <br>
 APP_ENV=local <br>
