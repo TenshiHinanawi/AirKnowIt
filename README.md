@@ -17,10 +17,10 @@ DB_DATABASE=your_database  <br>
 DB_USERNAME=your_username <br>
 DB_PASSWORD=your_password  <br>
 
-## Run Migrations
+## Finally Run Migrations
 - php artisan migrate
 
-
+## Test and check is everything runs correctly
 
 
 
