@@ -3,18 +3,18 @@
 
 ## For the env follow this format
 
-APP_NAME=Laravel
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=your_database
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+APP_NAME=Laravel <br>
+APP_ENV=local <br>
+APP_KEY= <br>
+APP_DEBUG=true  <br>
+APP_URL=http://localhost  <br>
+ <br> <br>
+DB_CONNECTION=mysql  <br>
+DB_HOST=127.0.0.1  <br>
+DB_PORT=3306  <br>
+DB_DATABASE=your_database  <br>
+DB_USERNAME=your_username <br>
+DB_PASSWORD=your_password  <br>
 
 
 
