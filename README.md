@@ -20,7 +20,8 @@ DB_PASSWORD=your_password  <br>
 ## Finally Run Migrations
 - php artisan migrate
 
-## Test and check is everything runs correctly
+
+Test and check if everything runs correctly
 
 
 
