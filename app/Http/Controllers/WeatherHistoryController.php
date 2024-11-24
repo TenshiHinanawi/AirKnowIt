@@ -40,4 +40,5 @@ class WeatherHistoryController extends Controller
         ]);
     }
 
+
 }

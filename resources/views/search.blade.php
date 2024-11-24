@@ -9,7 +9,7 @@
 </head>
 
 
-<body class="light-mode">
+<body class="{{ session('theme', 'light') === 'dark' ? 'dark-mode' : '' }}">
     <div id="container">
         <div class="header">
             <h1>AirKnowIt Dashboard</h1>

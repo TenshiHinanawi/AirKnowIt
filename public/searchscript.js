@@ -1,22 +1,10 @@
-// Theme toggle function
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-function setTheme(isDark) {
-    body.classList.toggle('dark-mode', isDark);
-    body.classList.toggle('light-mode', !isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-// Load theme from localStorage
-const savedTheme = localStorage.getItem('theme');
-setTheme(savedTheme === 'dark');
-themeToggle.checked = savedTheme === 'dark';
-
-themeToggle.addEventListener('change', () => setTheme(themeToggle.checked));
+document.getElementById('theme-toggle').addEventListener('click', function () {
+    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    window.location.href = `/set-theme/${newTheme}`;
+});
 
 document.getElementById("search-btn").addEventListener("click", fetchWeatherData);
-
 async function fetchWeatherData() {
     const city = document.getElementById("city-search").value;
     const API_KEY = '49e2122f5c9da4368f1cd972696db508';

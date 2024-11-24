@@ -1,22 +1,9 @@
-// Toggle theme based on user preference
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+document.getElementById('theme-toggle').addEventListener('click', function () {
+    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    window.location.href = `/set-theme/${newTheme}`;
+});
 
-function setTheme(isDark) {
-    body.classList.toggle('dark-mode', isDark);
-    body.classList.toggle('light-mode', !isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-// Load saved theme
-const savedTheme = localStorage.getItem('theme');
-setTheme(savedTheme === 'dark');
-themeToggle.checked = savedTheme === 'dark';
-
-// Toggle theme on checkbox change
-themeToggle.addEventListener('change', () => setTheme(themeToggle.checked));
-
-// Fetch data on page load using geolocation if available
 window.onload = function() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
@@ -29,7 +16,6 @@ window.onload = function() {
     }
 };
 
-// Fetch weather and air quality data based on city or coordinates
 async function fetchWeatherData(city = null, lat = null, lon = null) {
     const API_KEY = '49e2122f5c9da4368f1cd972696db508';
     let weatherUrl;

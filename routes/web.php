@@ -37,5 +37,8 @@ use App\Http\Controllers\WeatherHistoryController;
 Route::get('/historical-weather', [WeatherHistoryController::class, 'showWeatherData'])->name('historical.weather');
 Route::get('/historical-air', [WeatherHistoryController::class, 'showAirData'])->name('historical.air');
 
+use App\Http\Controllers\ThemeController;
+
+Route::get('/set-theme/{theme}', [ThemeController::class, 'setTheme'])->name('set.theme');
 
 require __DIR__.'/auth.php';
