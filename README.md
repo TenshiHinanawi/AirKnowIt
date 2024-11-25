@@ -20,7 +20,7 @@ DB_PASSWORD=your_password  <br>
 ## Build Application Manifest
 - npm install
 - npm run build
-- 
+
 ## Run Migrations
 - php artisan migrate
 
