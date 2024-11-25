@@ -17,9 +17,12 @@ DB_DATABASE=your_database  <br>
 DB_USERNAME=your_username <br>
 DB_PASSWORD=your_password  <br>
 
-## Finally Run Migrations
+## Build Application Manifest
+- npm install
+- npm run build
+- 
+## Run Migrations
 - php artisan migrate
-
 
 Test and check if everything runs correctly
 
