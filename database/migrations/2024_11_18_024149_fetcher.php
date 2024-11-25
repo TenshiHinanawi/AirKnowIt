@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('location');
             $table->string('country');
+            $table->string('weather');
+            $table->string('description');
             $table->float('temperature');
             $table->float('feels_like');
             $table->float('temp_min');

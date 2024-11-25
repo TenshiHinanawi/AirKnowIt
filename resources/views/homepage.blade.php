@@ -11,12 +11,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            background: linear-gradient(to bottom, #90caf9, #ffffff);
             color: #333;
         }
 
         header {
-            background-color: #0277bd;
+            background-color: #0288d1;
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -37,7 +37,7 @@
         /* Container styles */
         .container {
             max-width: 600px;
-            margin: 50px auto;
+            margin: 40px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 8px;
@@ -48,6 +48,7 @@
         .container h2 {
             font-size: 1.8em;
             margin-bottom: 20px;
+            color: #0288d1;
         }
 
         /* Authentication buttons */
@@ -56,21 +57,27 @@
             justify-content: center;
             gap: 20px;
             margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .auth-buttons a {
             padding: 12px 25px;
-            background-color: #0288d1;
+            background-color: #0277bd;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             font-size: 1em;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s;
+            text-align: center;
+            flex: 1;
+            max-width: 45%;
+            min-width: 120px;
         }
 
         .auth-buttons a:hover {
             background-color: #01579b;
+            transform: scale(1.05);
         }
 
         .auth-buttons a:focus {
@@ -80,6 +87,7 @@
 
         .auth-buttons a:active {
             background-color: #01386e;
+            transform: scale(0.95);
         }
 
         /* Responsive Design */
@@ -94,7 +102,6 @@
             }
 
             .auth-buttons {
-                flex-direction: column;
                 gap: 15px;
             }
 

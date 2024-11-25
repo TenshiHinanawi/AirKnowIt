@@ -62,7 +62,7 @@ canvas {
 .radarchart1 {
     width: 100%;
     max-width: 600px;
-    margin: 30px auto;
+    margin: auto;
 }
 
 /* Dropdown Button and Menu */
@@ -191,6 +191,10 @@ body.dark-mode {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
 }
 
 .switch input {
@@ -365,3 +369,18 @@ a {
 .form-container {
     margin-top: 20px;
 }
+
+.aircont {
+    border: 2px solid rgb(78, 78, 78);
+    padding: 50px;
+    text-align: center;
+}
+
+.cont {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+

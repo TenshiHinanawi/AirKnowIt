@@ -13,7 +13,7 @@
 
     <body class="{{ session('theme', 'light') === 'dark' ? 'dark-mode' : '' }}">
         <div class="container">
-            <h1>Weather Data for {{ $location ?? 'All Locations' }}</h1>
+            <h1>Historical Weather Data of {{ $location ?? 'All Locations' }}</h1>
 
             @if (Route::has('login'))
                 <nav class="-mx-3 flex flex-1 justify-end">
@@ -36,16 +36,19 @@
                 </nav>
             @endif
             <br>
-            <!-- Location Dropdown -->
-            <div class="dropdown">
-                <button class="dropdown-btn">Select Location</button>
-                <div class="dropdown-content">
-                    <a href="{{ route('historical.weather', ['location' => 'Navotas']) }}">Navotas</a>
-                    <a href="{{ route('historical.weather', ['location' => 'Manila']) }}">Manila</a>
-                    <a href="{{ route('historical.weather', ['location' => 'Cebu City']) }}">Cebu City</a>
-                    <a href="{{ route('historical.weather', ['location' => 'London']) }}">London</a>
-                    <a href="{{ route('historical.weather', ['location' => 'New York']) }}">New York</a>
-                    <a href="{{ route('historical.weather', ['location' => 'all']) }}">Reveal All Data</a>
+            <div class="cont">
+                <div class="form-container">
+                    <div class="dropdown">
+                        <button class="dropdown-btn">Select Location</button>
+                        <div class="dropdown-content">
+                            <a href="{{ route('historical.weather', ['location' => 'Navotas']) }}">Navotas</a>
+                            <a href="{{ route('historical.weather', ['location' => 'Manila']) }}">Manila</a>
+                            <a href="{{ route('historical.weather', ['location' => 'Cebu City']) }}">Cebu City</a>
+                            <a href="{{ route('historical.weather', ['location' => 'London']) }}">London</a>
+                            <a href="{{ route('historical.weather', ['location' => 'New York']) }}">New York</a>
+                            <a href="{{ route('historical.weather', ['location' => 'all']) }}">Reveal All Data</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <br><br>
@@ -53,25 +56,30 @@
                 <input type="checkbox" id="theme-toggle">
                 <span class="switch-label"></span>
             </label>
-
-            <div class="linechart1">
-                <canvas id="lineChart"></canvas>
+            <h1><span id="weather-description"></span></h1>
+            <br>
+            <div class="aircont">
+                <h1>Temperature</h1>
+                <div class="linechart1">
+                    <canvas id="temp"></canvas>
+                </div>
             </div>
-
-            <div class="barchart1">
-                <canvas id="barChart"></canvas>
+            <br>
+            <div class="aircont">
+                <h1>Humidity</h1>
+                <div class="linechart1">
+                    <canvas id="humidity"></canvas>
+                </div>
             </div>
-
-
-            <div class="doughnutchart1">
-                <canvas id="doughnutChart"></canvas>
+            <br>
+            <div class="aircont">
+                <h1>Wind Speed</h1>
+                <div class="linechart1">
+                    <canvas id="wind"></canvas>
+                </div>
             </div>
-
-            <div class="radarchart1">
-                <canvas id="radarChart"></canvas>
-            </div>
-
-
+            <br>
+            <br>
             <script>
                 // Prepare data for the charts
                 const labels = @json(
@@ -84,6 +92,8 @@
                 const humidity = @json($weatherData->pluck('humidity'));
                 const windSpeed = @json($weatherData->pluck('wind_speed'));
                 const pressure = @json($weatherData->pluck('pressure'));
+                const weather = @json($weatherData->pluck('description'));
+                const windDirection = @json($weatherData->pluck('wind_direction'));
                 const locationName = @json($location ?? 'All Locations'); // Get the location name
             </script>
             <script src="{{ asset('weather.js') }}"></script>

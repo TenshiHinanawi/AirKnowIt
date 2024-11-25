@@ -5,7 +5,7 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
 });
 
 Chart.defaults.color = '#4CAF50';
-const ctxLine = document.getElementById('lineChart').getContext('2d');
+const ctxLine = document.getElementById('temp').getContext('2d');
 const lineChart = new Chart(ctxLine, {
     type: 'line',
     data: {
@@ -13,16 +13,16 @@ const lineChart = new Chart(ctxLine, {
         datasets: [{
             label: 'Temperature (°C)',
             data: temperatures,
-            borderColor: 'rgb(75, 192, 192)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
             fill: false,
             tension: 0.1
         },
         {
             label: 'Feels Like (°C)',
             data: feelsLike,
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 200, 132)',
+            backgroundColor: 'rgba(255, 200, 132, 0.2)',
             fill: false,
             tension: 0.1
         }
@@ -56,7 +56,7 @@ const lineChart = new Chart(ctxLine, {
     }
 });
 
-const ctxBar = document.getElementById('barChart').getContext('2d');
+const ctxBar = document.getElementById('humidity').getContext('2d');
 const barChart = new Chart(ctxBar, {
     type: 'line',
     data: {
@@ -74,7 +74,7 @@ const barChart = new Chart(ctxBar, {
         plugins: {
             title: {
                 display: true,
-                text: `Humidity Levels at ${locationName}`,
+                text: `Historical Humidity Levels at ${locationName}`,
                 font: {
                     size: 18
                 }
@@ -97,18 +97,17 @@ const barChart = new Chart(ctxBar, {
     }
 });
 
-const ctxDoughnut = document.getElementById('doughnutChart').getContext('2d');
-const doughnutChart = new Chart(ctxDoughnut, {
-    type: 'doughnut',
+const ctxBar1 = document.getElementById('wind').getContext('2d');
+const wind = new Chart(ctxBar1, {
+    type: 'line',
     data: {
-        labels: ['Low Wind Speed', 'Moderate Wind Speed', 'High Wind Speed'],
+        labels: labels,
         datasets: [{
-            data: [
-                windSpeed.filter(ws => ws < 5).length,
-                windSpeed.filter(ws => ws >= 5 && ws < 15).length,
-                windSpeed.filter(ws => ws >= 15).length
-            ],
-            backgroundColor: ['rgb(75, 192, 192)', 'rgb(255, 159, 64)', 'rgb(255, 99, 132)'],
+            label: 'Wind Speed (m/s)',
+            data: windSpeed,
+            backgroundColor: 'rgba(135, 206, 235, 0.2)',
+            borderColor: 'rgb(135, 206, 235)',
+            borderWidth: 1
         }]
     },
     options: {
@@ -116,52 +115,60 @@ const doughnutChart = new Chart(ctxDoughnut, {
         plugins: {
             title: {
                 display: true,
-                text: `Wind Speed Distribution at ${locationName}`,
+                text: `Historical Wind Speed at ${locationName}`,
                 font: {
                     size: 18
+                }
+            }
+        },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date/Time'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Wind Speed (m/s)'
                 }
             }
         }
     }
 });
 
-const ctxRadar = document.getElementById('radarChart').getContext('2d');
-const radarChart = new Chart(ctxRadar, {
-    type: 'line',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Temperature (°C)',
-            data: temperatures,
-            borderColor: 'rgb(75, 192, 192)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            fill: true
-        },
-        {
-            label: 'Humidity (%)',
-            data: humidity,
-            borderColor: 'rgb(54, 162, 235)',
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            fill: true
-        },
-        {
-            label: 'Pressure (hPa)',
-            data: pressure,
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            fill: true
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: `Weather Comparison at ${locationName}`,
-                font: {
-                    size: 18
-                }
-            }
-        }
+const weatherElement = document.getElementById('weather-description');
+if (weather.length > 0) {
+    weatherElement.innerText = `Weather: ${weather[0]}`;
+    if (weather[0] == "scattered clouds") {
+        weatherElement.innerText = `Weather: Scattered Clouds`;
     }
-});
+    if (weather[0] == "few clouds") {
+        weatherElement.innerText = `Weather: Few Clouds`;
+    }
+    if (weather[0] == "broken clouds") {
+        weatherElement.innerText = `Weather: Broken Clouds`;
+    }
+    if (weather[0] == "clear sky") {
+        weatherElement.innerText = `Weather: Clear Sky`;
+    }
+    if (weather[0] == "shower rain") {
+        weatherElement.innerText = `Weather: Rain Shower`;
+    }
+    if (weather[0] == "rain") {
+        weatherElement.innerText = `Weather: Rain`;
+    }
+    if (weather[0] == "thunderstorm") {
+        weatherElement.innerText = `Weather: Thunderstorm`;
+    }
+    if (weather[0] == "snow") {
+        weatherElement.innerText = `Weather: Snow`;
+    }
+    if (weather[0] == "mist") {
+        weatherElement.innerText = `Weather: Mist`;
+    }
+} else {
+    weatherElement.innerText = 'Weather data not available';
+}
+

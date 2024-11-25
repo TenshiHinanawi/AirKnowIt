@@ -14,7 +14,7 @@ class WeatherData extends Model
 
     // Define the fillable fields for mass assignment
     protected $fillable = [
-        'location', 'country', 'temperature', 'feels_like', 'temp_min', 'temp_max',
+        'location', 'country', 'weather', 'description' ,'temperature', 'feels_like', 'temp_min', 'temp_max',
         'humidity', 'pressure', 'visibility', 'cloudiness', 'wind_speed', 'wind_gust',
         'wind_direction'
     ];

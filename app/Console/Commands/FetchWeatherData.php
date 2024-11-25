@@ -29,6 +29,8 @@ class FetchWeatherData extends Command
                 $weather = WeatherData::create([
                     'location' => $data['name'],
                     'country' => $data['sys']['country'],
+                    'weather' => $data['weather'][0]['main'],
+                    'description' => $data['weather'][0]['description'],
                     'temperature' => $data['main']['temp'],
                     'feels_like' => $data['main']['feels_like'],
                     'temp_min' => $data['main']['temp_min'],
