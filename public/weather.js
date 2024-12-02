@@ -105,8 +105,15 @@ const wind = new Chart(ctxBar1, {
         datasets: [{
             label: 'Wind Speed (m/s)',
             data: windSpeed,
-            backgroundColor: 'rgba(135, 206, 235, 0.2)',
-            borderColor: 'rgb(135, 206, 235)',
+            backgroundColor: 'rgba(19, 100, 255, 0.2)',
+            borderColor: 'rgb(19, 100, 255)',
+            borderWidth: 1
+        },
+        {
+            label: 'Wind Gust (m/s)',
+            data: gust,
+            backgroundColor: 'rgba(135, 206, 200, 0.2)',
+            borderColor: 'rgb(135, 206, 200)',
             borderWidth: 1
         }]
     },

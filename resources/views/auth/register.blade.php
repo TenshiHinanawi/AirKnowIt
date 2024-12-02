@@ -1,8 +1,8 @@
 <x-guest-layout>
     <style>
         body {
-            background: linear-gradient(to bottom, #90caf9, #ffffff); /* Matches homepage theme */
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #4fc3f7, #ffffff); /* Light sky blue gradient */
+            font-family: 'Arial', sans-serif;
             color: #333;
             margin: 0;
             padding: 0;
@@ -10,17 +10,17 @@
 
         .register-container {
             max-width: 400px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 20px;
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h2 {
             color: #0288d1;
-            font-size: 1.8em;
+            font-size: 2em;
             margin-bottom: 20px;
         }
 
@@ -31,28 +31,30 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
+            margin-bottom: 6px;
+            color: #4caf50; /* Fresh green for labels */
         }
 
         input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
         }
 
         input:focus {
             outline: none;
             border-color: #0288d1;
-            box-shadow: 0 0 5px rgba(2, 136, 209, 0.5);
+            box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
         }
 
         .form-footer {
@@ -72,15 +74,16 @@
 
         button {
             width: 100%;
-            background-color: #0277bd;
+            background-color: #0288d1;
             color: white;
             border: none;
-            padding: 12px;
-            font-size: 1em;
+            padding: 14px;
+            font-size: 1.1em;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
@@ -89,17 +92,26 @@
 
         button:focus {
             outline: 3px solid #81d4fa;
-            background-color: #0277bd;
+            background-color: #0288d1;
         }
 
         button:active {
-            background-color: #01386e;
+            background-color: #01579b;
+        }
+
+        @media (max-width: 400px) {
+            .register-container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.7em;
+            }
         }
     </style>
 
     <div class="register-container">
-
-
         <h2>Register</h2>
 
         <form method="POST" action="{{ route('register') }}">

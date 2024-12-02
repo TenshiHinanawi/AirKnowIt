@@ -10,7 +10,7 @@ class WeatherHistoryController extends Controller
 {
     public function showWeatherData(Request $request)
     {
-        $location = $request->input('location', 'all'); // Default to 'all' if no location is selected
+        $location = $request->input('location'); // Default to 'all' if no location is selected
 
         if ($location != 'all') {
             $weatherData = WeatherData::where('location', $location)->get();
@@ -26,7 +26,7 @@ class WeatherHistoryController extends Controller
 
     public function showAirData(Request $request)
     {
-        $location = $request->input('location', 'all'); // Default to 'all' if no location is selected
+        $location = $request->input('location'); // Default to 'all' if no location is selected
 
         if ($location != 'all') {
             $AirQualityData = AirQualityData::where('location', $location)->get();

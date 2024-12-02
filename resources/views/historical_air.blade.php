@@ -10,52 +10,51 @@
         <title>Air Quality Data</title>
     </head>
 
-    <body class="{{ session('theme', 'light') === 'dark' ? 'dark-mode' : '' }}">
-        <div class="container">
-            <h1>Historical Air Quality Data of {{ $location ?? 'All Locations' }}</h1>
+    <body>
+
+        <!-- Theme toggle switch -->
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="switch-label"></span>
+        </label>
+
+        <!-- Header Section -->
+        <div class="header">
+            <h1>AirKnowIt</h1>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Select Location</button>
+                    <div class="dropdown-content">
+                        <a href="{{ route('historical.air', ['location' => 'Navotas']) }}">Navotas</a>
+                        <a href="{{ route('historical.air', ['location' => 'Manila']) }}">Manila</a>
+                        <a href="{{ route('historical.air', ['location' => 'Cebu City']) }}">Cebu City</a>
+                        <a href="{{ route('historical.air', ['location' => 'London']) }}">London</a>
+                        <a href="{{ route('historical.air', ['location' => 'New York']) }}">New York</a>
+                    </div>
+                </div>
             @if (Route::has('login'))
-                <nav class="-mx-3 flex flex-1 justify-end">
+                <nav>
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="dashboardtext">
-                            Dashboard
-                        </a>
+                        <a href="{{ url('/dashboard') }}" class="dashboardtext">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                            Log in
-                        </a>
+                        <a href="{{ route('login') }}" class="dashboardtext">Log in</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                Register
-                            </a>
+                            <a href="{{ route('register') }}" class="dashboardtext">Register</a>
                         @endif
                     @endauth
                 </nav>
             @endif
-
-            <div class="cont">
-                <div class="form-container">
-                    <div class="dropdown">
-                        <button class="dropdown-btn">Select Location</button>
-                        <div class="dropdown-content">
-                            <a href="{{ route('historical.air', ['location' => 'Navotas']) }}">Navotas</a>
-                            <a href="{{ route('historical.air', ['location' => 'Manila']) }}">Manila</a>
-                            <a href="{{ route('historical.air', ['location' => 'Cebu City']) }}">Cebu City</a>
-                            <a href="{{ route('historical.air', ['location' => 'London']) }}">London</a>
-                            <a href="{{ route('historical.air', ['location' => 'New York']) }}">New York</a>
-                            <a href="{{ route('historical.air', ['location' => 'all']) }}">Reveal All Data</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <br>
+        <div id="container2">
             <br>
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="switch-label"></span>
             </label>
+
+
             <br>
-            <div class="aircont">
+            <div class="card2">
                 <h1>Particulate Matter</h1>
                 <div class="linechart1">
                     <p style="text-align: justify">PM 2.5 and PM 10 (Particulate Matter) refer to airborne particles with
@@ -69,7 +68,8 @@
                 </div>
                 <br>
                 <div class="linechart1">
-                    <p>PM 2.5</p>
+                    <h3>PM 2.5</h3>
+                    <p>Current PM 2.5 Level: {{ $AirQualityData->pluck('pm2_5')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 35+ µg/m³</p>
                     <canvas id="pm2_5"></canvas>
                 </div>
@@ -77,13 +77,14 @@
                 <br>
                 <br>
                 <div class="linechart1">
-                    <p>PM 10</p>
+                    <h3>PM 10</h3>
+                    <p>Current PM 10 Level: {{ $AirQualityData->pluck('pm10')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 100+ µg/m³</p>
                     <canvas id="pm10"></canvas>
                 </div>
             </div>
             <br>
-            <div class="aircont">
+            <div class="card2">
                 <h1>Ozone</h1>
                 <div class="linechart1">
                     <p style="text-align: justify">Ozone (O₃) is created at ground level through a chemical reaction between
@@ -98,13 +99,14 @@
                 </div>
                 <br>
                 <div class="linechart1">
-                    <p>Ozone</p>
+                    <h3>Ozone</h3>
+                    <p>Current Ozone Level: {{ $AirQualityData->pluck('o3')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 150+ µg/m³</p>
                     <canvas id="ozone"></canvas>
                 </div>
             </div>
             <br>
-            <div class="aircont">
+            <div class="card2">
                 <h1>Nitrogen Oxides</h1>
                 <div class="linechart1">
                     <p style="text-align: justify">Nitrogen compounds, like nitrogen dioxide (NO₂) and nitric oxide (NO),
@@ -116,19 +118,21 @@
                 </div>
                 <br>
                 <div class="linechart1">
-                    <p>Nitrogen Monoxide</p>
+                    <h3>Nitrogen Monoxide</h3>
+                    <p>Current Nitrogen Monoxide Level: {{ $AirQualityData->pluck('no')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 150+ µg/m³</p>
                     <canvas id="nitro-mono"></canvas>
                 </div>
                 <br>
                 <div class="linechart1">
-                    <p>Nitrogen Dioxide</p>
+                    <h3>Nitrogen Dioxide</h3>
+                    <p>Current Nitrogen Dioxide Level: {{ $AirQualityData->pluck('no2')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 160+ µg/m³</p>
                     <canvas id="nitro-dio"></canvas>
                 </div>
             </div>
             <br>
-            <div class="aircont">
+            <div class="card2">
                 <h1>Carbon Monoxide</h1>
                 <div class="linechart1">
                     <p style="text-align: justify">Carbon monoxide (CO) is a colorless, odorless gas produced by the
@@ -138,13 +142,14 @@
                 </div>
                 <br>
                 <div class="linechart1">
-                    <p>Carbon Monoxide</p>
+                    <h3>Carbon Monoxide</h3>
+                    <p>Current Carbon Monoxide Level: {{ $AirQualityData->pluck('co')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 1200+ µg/m³</p>
                     <canvas id="carbon"></canvas>
                 </div>
             </div>
             <br>
-            <div class="aircont">
+            <div class="card2">
                 <h1>Sulfur Dioxide</h1>
                 <div class="linechart1">
                     <p style="text-align: justify">Sulfur dioxide (SO₂) is a colorless gas with a pungent odor, primarily
@@ -154,16 +159,17 @@
                         damage and contribute to the formation of acid rain, which harms ecosystems and buildings.</p>
                 </div>
                 <br>
-                <div class="linechart1">
-                    <p>Sulfur Dioxide</p>
+                <div>
+                    <h3>Sulfur Dioxide</h3>
+                    <p>Current Sulfur Dioxide Level: {{ $AirQualityData->pluck('so2')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 200+ µg/m³</p>
                     <canvas id="sulfur"></canvas>
                 </div>
             </div>
             <br>
-            <div class="aircont">
+            <div class="card2">
                 <h1>Ammonia</h1>
-                <div class="linechart1">
+                <div>
                     <p style="text-align: justify">Ammonia (NH₃) is a colorless gas with a pungent odor, primarily released
                         from agricultural activities, waste treatment plants, and industrial processes. While essential for
                         plant growth, excessive ammonia levels in the air can irritate the respiratory system, cause
@@ -171,8 +177,9 @@
                         formation of fine particulate matter, making it a significant air quality concern.</p>
                 </div>
                 <br>
-                <div class="linechart1">
-                    <p>Ammonia</p>
+                <div>
+                    <h3>Ammonia</h3>
+                    <p>Current Ammonia Level: {{ $AirQualityData->pluck('nh3')->last() }}µg/m³</p>
                     <p>Unhealthy Levels: 150+ µg/m³</p>
                     <canvas id="ammonia"></canvas>
                 </div>
@@ -198,6 +205,7 @@
             </script>
             <script src="{{ asset('airquality.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+        </div>
         </div>
     </body>
 @endauth

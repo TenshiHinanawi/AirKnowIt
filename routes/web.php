@@ -7,11 +7,6 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/geolocation', function () {
-    return view('weather_overview');
-});
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -26,7 +21,7 @@ use App\Http\Controllers\WeatherController;
 
 
 Route::get('/search', function () {
-    return view('search');
+    return view('main');
 });
 
 Route::get('/api/weather', [WeatherController::class, 'getWeatherData']);
